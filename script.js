@@ -2,6 +2,7 @@ const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognit
 recognition.lang = "en-US";
 
 const btn = document.querySelector("#btn");
+const outputBox = document.getElementById("output");
 
 btn.addEventListener("click", () => {
     function speak(text) {
@@ -38,11 +39,13 @@ btn.addEventListener("click", () => {
                     } else {
                         speak("I couldn't find an answer. Let me search it for you on Google.");
                         window.open(`https://www.google.com/search?q=${command}`, "_blank");
+                        outputBox.innerText = "No direct answer found. Searching on Google...";
                     }
                 })
                 .catch(error => {
                     console.error("API Error:", error);
                     speak("Something went wrong. Searching on Google.");
+                    outputBox.innerText = "Error fetching data. Redirecting to Google...";
                     window.open(`https://www.google.com/search?q=${command}`, "_blank");
                 });
         }
