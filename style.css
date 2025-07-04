@@ -1,0 +1,95 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    width: 100%;
+    font-family: "Roboto", sans-serif;
+}
+
+body {
+    background-image: url("image/Robo.avif");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    padding: 20px;
+}
+
+.container {
+    background-color: rgba(0, 0, 0, 0.8);
+    padding: 40px;
+    border-radius: 10px;
+    text-align: center;
+    max-width: 90%;
+}
+
+.container h1 {
+    font-size: 48px;
+    font-weight: 900;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+}
+
+.container p {
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+.listen-btn {
+    padding: 12px 25px;
+    font-size: 20px;
+    border: none;
+    border-radius: 10px;
+    background-color: #4caf50;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.listen-btn:hover {
+    background-color: #39723b;
+}
+
+/* 🔁 Media Queries for responsiveness */
+@media (max-width: 768px) {
+    .container h1 {
+        font-size: 36px;
+    }
+
+    .container p {
+        font-size: 16px;
+    }
+
+    .listen-btn {
+        font-size: 18px;
+        padding: 10px 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 25px;
+    }
+
+    .container h1 {
+        font-size: 28px;
+    }
+
+    .container p {
+        font-size: 14px;
+    }
+
+    .listen-btn {
+        font-size: 16px;
+        padding: 8px 16px;
+    }
+}
