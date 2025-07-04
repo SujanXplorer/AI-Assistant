@@ -22,9 +22,29 @@ btn.addEventListener("click", () => {
         } else if (command.includes("open whatsapp")) {
             speak("Opening whatsapp...");
             window.open("https://www.whatsapp.com", "_blank");
+        } else if (command.includes("open github")) {
+            speak("Opening GitHub...");
+            window.open("https://www.github.com", "_blank");
+
         } else {
-            speak("Searching on Google...");
-            window.open(`https://www.google.com/search?q=${command}`, "_blank");
+            // Use DuckDuckGo Instant Answer API
+            fetch(`https://api.duckduckgo.com/?q=${encodeURIComponent(command)}&format=json&no_redirect=1&skip_disambig=1`)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.AbstractText) {
+                        speak(data.AbstractText);
+                    } else if (data.RelatedTopics && data.RelatedTopics.length > 0 && data.RelatedTopics[0].Text) {
+                        speak(data.RelatedTopics[0].Text);
+                    } else {
+                        speak("I couldn't find an answer. Let me search it for you on Google.");
+                        window.open(`https://www.google.com/search?q=${command}`, "_blank");
+                    }
+                })
+                .catch(error => {
+                    console.error("API Error:", error);
+                    speak("Something went wrong. Searching on Google.");
+                    window.open(`https://www.google.com/search?q=${command}`, "_blank");
+                });
         }
     }
 
