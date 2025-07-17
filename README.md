@@ -22,6 +22,7 @@ A simple AI-powered voice assistant built using HTML, CSS, and JavaScript that l
 ## 🗂️ Project Structure
 
 🗂️ your-project-folder/
+
 ├── index.html # Main HTML file
 
 ├── style.css # Styling for the interface
